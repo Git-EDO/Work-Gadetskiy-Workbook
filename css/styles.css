@@ -141,7 +141,7 @@ body {
   width: 100%;
 }
 .side-menu-wrapper {
-  flex: 1 0 20%;
+  flex: 1 0 285px;
 }
 .side-menu {
   margin-right: 8px;
