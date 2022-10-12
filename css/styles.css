@@ -1,0 +1,443 @@
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url(../fonts/gothampro.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url(../fonts/gothampro_medium.ttf);
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url(../fonts/gothampro_bold.ttf);
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --dark-blue: #064674;
+  --dark-red: #8C197F;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0px;
+}
+ol {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0px;
+  padding-left: 20px;
+}
+
+li {
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #FBFBFF;
+
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 113%;
+  color: #000000;
+}
+
+.container {
+  max-width: 1288px;
+  padding: 0 15px 50px 15px;
+  margin: 0 142px 0 40px;
+}
+
+.header {
+  margin-top: 40px;
+}
+.header-logo {
+}
+.main {
+  margin-top: 44px;
+}
+.main-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  padding: 50px 20px;
+  background-image: url('../img/trimesters/002.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.main-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255,255,255,0.8);
+  width: 100%;
+  height: 100%;
+}
+.main-header-title {
+  position: relative;
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 31px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #064674;
+  z-index: 1;
+}
+.main-header-trimester {
+  position: relative;
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17.0323px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #8C197F;
+  padding: 14px;
+  border: 1.41935px solid #8C197F;
+  border-radius: 5.67742px;
+  margin: 32px 0;
+  z-index: 1;
+}
+.main-header-subtitle {
+  position: relative;
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #8C197F;
+  z-index: 1;
+}
+.main-content {
+  margin-top: 17px;
+  display: flex;
+  width: 100%;
+}
+.side-menu-wrapper {
+  flex: 1 0 20%;
+}
+.side-menu {
+  margin-right: 8px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px rgba(6, 70, 116, 0.18);
+  overflow: hidden;
+  background: #F3F4FF;
+}
+.side-menu:not(:nth-of-type(1)) {
+  margin-top: 20px;
+}
+.side-menu-list {
+  list-style: none;
+}
+.side-menu-list > li > .side-menu-item-label {
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 15px;
+  color: #064674;
+  border-bottom: 1px solid #A6BFD1;
+  padding: 20px 30px 20px 20px;
+  position: relative;
+  cursor: pointer;
+}
+.side-menu-list > li.active > .side-menu-item-label {
+  color: #FFFFFF;
+  background: linear-gradient(180deg, #338FD1 0%, #064674 86.84%);
+}
+.side-menu-list > li:hover > .side-menu-item-label {
+  color: #FFFFFF;
+  background: linear-gradient(180deg, #338FD1 0%, #064674 86.84%);
+}
+.side-menu-list > li > .side-menu-item-label:after {
+  content: '>';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+.side-menu-list > li.active > .side-menu-item-label:after {
+  transform: translateY(-50%) rotate(90deg);
+}
+.side-menu-list > li.active > .side-submenu-list {
+  visibility: visible;
+  opacity: 1;
+  max-height: 100%;
+}
+.side-menu-item {
+}
+.side-submenu-list {
+  visibility: hidden;
+  opacity: 0;
+  max-height: 0;
+  list-style: none;
+}
+.side-submenu-item {
+  background: #fff;
+  padding: 20px 24px;
+}
+.side-submenu-item a {
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 15px;
+  color: #064674;
+}
+.side-submenu-item:hover {
+  background: linear-gradient(0deg, #FFF1FD, #FFF1FD), linear-gradient(180deg, #338FD1 0%, #064674 86.84%);
+}
+.main-workbook-content {
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 4px rgba(6, 70, 116, 0.18);
+  border-radius: 12px;
+  padding: 40px 31px 40px 40px;
+}
+.main-workbook-content p {
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 113%;
+  color: #000000;
+}
+.main-workbook-content p span {
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 120%;
+  color: #000000;
+}
+
+/* === content === */
+
+.main-workbook-content {
+}
+.exercise {
+  display: flex;
+  flex-direction: column;
+}
+.exercise-title {
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 120%;
+  color: #000000;
+  position: relative;
+  padding-left: 25px;
+}
+.exercise-title span::before {
+  content: '';
+  background-image: url('../img/content/title-icon.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+}
+.task {
+  margin-top: 28px;
+}
+.task ul {
+  padding-left: 20px;
+}
+.task ul li {
+  margin-top: 8px;
+}
+.task ol li {
+  margin-top: 8px;
+}
+.task-title {
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 113%;
+  color: #000000;
+}
+.task-title ul {
+  list-style: none;
+}
+.task-subtitle {
+  margin-top: 16px;
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 120%;
+  color: #000000;
+  text-transform: uppercase;
+}
+.task-input {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.task-input ul {
+}
+.task-input ol {
+  margin-top: 16px;
+}
+.task-input label {
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 120%;
+  color: #8C197F;
+}
+.task-input textarea {
+  margin-top: 8px;
+  background: #F2F5FB;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: none;
+  outline: none;
+  min-height: 65px;
+
+  resize: none;
+
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 113%;
+  color: #000000;
+}
+.task-input textarea:focus {
+  outline: none;
+}
+.comment {
+  margin-top: 16px;
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  color: #000000;
+}
+.task-discussion {
+  padding: 28px;
+  background-color: #FFF1FD;
+  border-radius: 12px;
+}
+.task-discussion p {
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 120%;
+  color: #000000;
+  position: relative;
+  padding-left: 30px;
+}
+.task-discussion p::before {
+  content: '';
+  background-image: url('../img/content/discussion.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 24px;
+  height: 24px;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 28px;
+}
+.buttons button {
+  border-radius: 4px;
+  padding: 7.5px 23px;
+  border: none;
+
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  color: #FFFFFF;
+
+  cursor: pointer;
+}
+.buttons button:hover {
+  filter: brightness(90%);
+}
+.buttons button:active {
+  transform: scale(0.98);
+}
+.buttons button:focus {
+  outline: none;
+}
+.buttons .save {
+  background: #064674;
+}
+.buttons .back {
+  margin-left: 20px;
+  background: #8C197F;
+}
+
+.next-lesson {
+  float: right;
+  background: #8C197F;
+  border-radius: 4px;
+  padding: 7.5px 23px;
+  border: none;
+
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  color: #FFFFFF;
+
+  cursor: pointer;
+  
+  margin-top: 70px;
+}
+.next-lesson img {
+  margin-left: 10px;
+}
+.next-lesson:hover {
+  filter: brightness(90%);
+}
+.next-lesson:active {
+  transform: scale(0.98);
+}
+.next-lesson:focus {
+  outline: none;
+}
