@@ -506,3 +506,77 @@ body {
 .next-lesson:focus {
   outline: none;
 }
+
+@media(max-width: 1200px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 15px 50px 15px;
+    margin: 0 80px 0 40px;
+  }
+}
+@media(max-width: 992px) {
+  .container {
+    max-width: 990px;
+    padding: 0 15px 50px 15px;
+    margin: 0;
+  }
+}
+@media(max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  .main-workbook-content {
+    margin-top: 20px;
+  }
+}
+@media(max-width: 576px) {
+  .main-exercise-content {
+    padding: 30px 15px 30px 15px;
+  }
+  .buttons {
+    flex-direction: column;
+  }
+  button {
+    min-width: 220px;
+  }
+  .buttons .back {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+  .main-header-title {
+    font-size: 28px;
+  }
+  .main-header-subtitle {
+    font-size: 20px;
+  }
+  .main-header-trimester {
+    font-size: 16px;
+  }
+  body {
+    font-size: 16px;
+  }
+  .exercise-title {
+    font-size: 20px;
+  }
+  .task-title {
+    font-size: 16px;
+  }
+  .task-subtitle {
+    font-size: 16px;
+  }
+  .task-input label {
+    font-size: 16px;
+  }
+  .task-input textarea {
+    font-size: 16px;
+  }
+  .main-workbook-content p {
+    font-size: 16px;
+  }
+  .buttons button {
+    font-size: 16px;
+  }
+  button {
+    min-width: 200px;
+  }
+}
