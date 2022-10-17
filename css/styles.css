@@ -531,6 +531,9 @@ body {
   .main-workbook-content {
     margin-top: 20px;
   }
+  .side-menu {
+    max-width: 100%;
+  }
 }
 @media(max-width: 576px) {
   .main-exercise-content {
