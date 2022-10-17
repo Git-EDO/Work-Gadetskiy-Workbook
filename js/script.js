@@ -13,116 +13,108 @@ sideMenuItems.forEach(item => {
   })
 });
 
-// Подготовка объекта для отправки на сервер
+// Отправка формы
 
-const saveBtns = document.querySelectorAll('.save');
+const forms = document.querySelectorAll('.exercise');
 
-saveBtns.forEach(btn => {
+forms.forEach(form => {
+  form.onsubmit = (e) => {
+    e.preventDefault();
 
-  btn.addEventListener('click', (e) => {
+    const uid = 1234567
+    const formData = new FormData(form)
 
-    e.preventDefault()
-    const uid = 1234567 // Нужно получить из Геткурса
+    formData.append('form_id', form.id)
+    formData.append('user', uid)
+    formData.append('action', 'edit')
+    formData.append('stream', 'stream1')
 
-    const form = btn.closest('form')
-    // console.log(form)
-    const formTextareas = form.querySelectorAll('textarea')
-    // console.log(formTextareas)
-
-
-    const objectForSending = {
-      user: uid,
-      formID: form.id.replace('f', '')
-    }
-  
-    formTextareas.forEach(textarea => Object.assign(objectForSending, {[textarea.id.replace('t', '')]: textarea.value}))
-  
-    console.log(objectForSending)
-
-
-    sendRequest('POST', requestURL, objectForSending)
+    fetch('https://rt.ptt.life/do.php', {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData
+    })
+    .then(response => response.json())
     .then(data => console.log(data))
-    .catch(error => console.log(error))
-  })
-
+    .catch(error => console.error(error.message))
+  }
 });
 
-const requestURL = 'http://rt.ptt.life/';
 
-async function sendRequest(method, url, body = null) {
-  const headers = {
-    'Content-type': 'application/json'
-  }
+  // fetch('https://rt.ptt.life/do.php', {
+  //   method: 'POST',
+  //   mode: 'no-cors',
+  //   body: JSON.stringify({action: 'get', 'user': 1234567, 'stream': 'stream1', 'form_id': 'f11-2-4-1'})
+  // })
+  // .then((res) => {
+  //   if(res.ok) {
+  //     return res.json()
+  //   } else {
+  //     console.error(res.status, res.statusText)
+  //   }
+  // })
+  // .then((data) => {
+  //   console.log(data)
+  // })
 
-  const response = await fetch(url, {
-    method,
-    mode: 'no-cors',
-    body: JSON.stringify(body),
-    headers
-  });
-  if (response.ok) {
-    return response.json();
-  } else {
-    return response.json().then(error => console.error(error));
-  }
-};
 
-// const someData = {
-//   user: 1234567,
-//   formID: 11-2-5-1,
-//   "11-2-5-1_1": 'Привет, как дела?',
-//   "11-2-5-1_2": 'Привет, как дела?',
-//   "11-2-5-1_3": 'Привет, как дела?',
-//   "11-2-5-1_4": 'Привет, как дела?',
-//   "11-2-5-1_5": 'Привет, как дела?',
-//   "11-2-5-1_6": 'Привет, как дела?',
-//   "11-2-5-1_7": 'Привет, как дела?'
-// }
 
-// for (let input in someData) {
-//   if(document.getElementById(input)) {
-//     document.getElementById(input).value = someData[input]
+
+
+
+
+
+  
+// const getForm = fetch('https://rt.ptt.life/do.php?uid=1234567&form_id=f11-2-4-1&action=get&stream=stream1', {
+//   method: 'GET',
+//   mode: 'no-cors'
+// })
+// .then(response => response.json())
+// .then(data => console.log(data))
+// .catch(error => console.log(error))
+
+// Подготовка объекта для отправки на сервер
+
+// const saveBtns = document.querySelectorAll('.save');
+
+// saveBtns.forEach(btn => {
+
+//   btn.addEventListener('click', (e) => {
+
+//     e.preventDefault()
+//     const uid = 1234567 // Нужно получить из Геткурса
+
+//     const form = btn.closest('form')
+//     // const formTextareas = form.querySelectorAll('textarea')
+
+
+    // const objectForSending = {
+    //   user: uid,
+    //   form_id: form.id.replace('f', ''),
+    //   stream: 'stream1',
+    //   action: 'edit'
+    // }
+  
+    // formTextareas.forEach(textarea => Object.assign(objectForSending, {[textarea.id.replace('t', '')]: textarea.value}))
+  
+    // console.log(objectForSending)
+
+    // const formData = new FormData();
+    // formData.append(form_id, form.id.replace('f', ''))
+    // formData.append(user, uid)
+
+//     console.log(formData)
+//   sendRequest('POST', requestURL, objectForSending)
+//   .then(data => console.log(data))
+//   .catch(error => console.log(error))
+// })
+//   })
+// });
+
+// someData.forEach(form => {
+//   for (let input in form) {
+//     if(document.getElementById(input)) {
+//       document.getElementById(input).value = form[input]
+//     }
 //   }
-// }
-
-// Получаем уже заполненные данные пользователя с сервера
-
-const someData = [
-  {
-    user: 1234567,
-    formID: 11-2-5-1,
-    "11-2-5-1_1": 'Привет, как дела?',
-    "11-2-5-1_2": 'Привет, как дела?',
-    "11-2-5-1_3": 'Привет, как дела?',
-    "11-2-5-1_4": 'Привет, как дела?',
-    "11-2-5-1_5": 'Привет, как дела?',
-    "11-2-5-1_6": 'Привет, как дела?',
-    "11-2-5-1_7": 'Привет, как дела?'
-  },
-  {
-    user: 1234567,
-    formID: 11-2-6-1,
-    "11-2-6-1_1": 'Привет, как дела?',
-    "11-2-6-1_2": 'Привет, как дела?',
-    "11-2-6-1_3": 'Привет, как дела?',
-    "11-2-6-1_4": 'Привет, как дела?',
-    "11-2-6-1_5": 'Привет, как дела?',
-    "11-2-6-1_6": 'Привет, как дела?',
-    "11-2-6-1_7": 'Привет, как дела?',
-    "11-2-6-1_8": 'Привет, как дела?',
-    "11-2-6-1_9": 'Привет, как дела?',
-    "11-2-6-1_10": 'Привет, как дела?',
-    "11-2-6-1_11": 'Привет, как дела?',
-    "11-2-6-1_12": 'Привет, как дела?'
-  }
-]
-
-someData.forEach(form => {
-  for (let input in form) {
-    if(document.getElementById(input)) {
-      document.getElementById(input).value = form[input]
-    }
-  }
-})
-
-console.log(someData)
+// });

@@ -160,6 +160,7 @@ body {
   box-shadow: 0px 0px 5px rgba(6, 70, 116, 0.18);
   overflow: hidden;
   background: #F3F4FF;
+  max-width: 285px;
 }
 
 .side-menu:not(:nth-of-type(1)) {
@@ -241,7 +242,9 @@ body {
   background: linear-gradient(0deg, #FFF1FD, #FFF1FD), linear-gradient(180deg, #338FD1 0%, #064674 86.84%);
 }
 
-.main-workbook-content {}
+.main-workbook-content {
+  width: 100%;
+}
 
 .main-exercise-content {
   display: none;
