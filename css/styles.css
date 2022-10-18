@@ -605,6 +605,19 @@ body {
   margin-left: 20px;
   background: #8C197F;
 }
+.buttons .send-task {
+  background: #064674;
+  margin-left: auto;
+}
+.buttons .send-task::after {
+  content: url('../img/content/arrow-right.svg');
+  margin-left: 5px;
+}
+.buttons .send-task:disabled {
+  filter: grayscale(1);
+  opacity: 0.4;
+  pointer-events: none;
+}
 
 .next-lesson {
   float: right;
@@ -640,12 +653,19 @@ body {
 .next-lesson:focus {
   outline: none;
 }
-
 @media(max-width: 1200px) {
   .container {
     max-width: 1200px;
     padding: 0 15px 50px 15px;
     margin: 0 80px 0 40px;
+  }
+  .buttons {
+    flex-wrap: wrap;
+  }
+  .buttons .send-task {
+    background: #064674;
+    margin-left: 0;
+    margin-top: 20px;
   }
 }
 @media(max-width: 992px) {
@@ -665,11 +685,6 @@ body {
   .side-menu {
     max-width: 100%;
   }
-}
-@media(max-width: 576px) {
-  .main-exercise-content {
-    padding: 30px 15px 30px 15px;
-  }
   .buttons {
     flex-direction: column;
   }
@@ -679,6 +694,15 @@ body {
   .buttons .back {
     margin-left: 0px;
     margin-top: 20px;
+  }
+  .buttons .send-task {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+}
+@media(max-width: 576px) {
+  .main-exercise-content {
+    padding: 30px 15px 30px 15px;
   }
   .main-header-title {
     font-size: 28px;

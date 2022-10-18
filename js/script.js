@@ -27,45 +27,77 @@ sideSubmenuItems.forEach(item => {
 
 // Отправка формы
 
-// const forms = document.querySelectorAll('.exercise');
+const forms = document.querySelectorAll('.exercise');
 
-// forms.forEach(form => {
-//   form.onsubmit = (e) => {
-//     e.preventDefault();
+forms.forEach(form => {
+  form.onsubmit = (e) => {
+    e.preventDefault();
 
-//     const uid = 1234567
-//     const formData = new FormData(form)
+    const uid = 1234567
+    const formData = new FormData(form)
 
-//     formData.append('form_id', form.id)
-//     formData.append('user', uid)
-//     formData.append('action', 'edit')
-//     formData.append('stream', 'stream1')
+    formData.append('form_id', form.id)
+    formData.append('user', uid)
+    formData.append('action', 'edit')
+    formData.append('stream', 'stream1')
 
-//     fetch('https://rt.ptt.life/do.php', {
-//       method: 'POST',
-//       mode: 'no-cors',
-//       body: formData
-//     })
-//     .then(response => response.json())
-//     .then(data => console.log(data))
-//     .catch(error => console.error(error.message))
-//   }
-// });
+    fetch('https://rt.ptt.life/do.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then((response) => {
+      if(response.ok) {
+        response.json()
+        form.querySelector('.send-task').disabled = false
+      }
+    })
+    .then(data => console.log(data))
+    .catch(error => console.error(error.message))
+  }
+})
 
-const newFormData = new FormData();
+// Отправка данных выполненного задания
 
-newFormData.append('form_id', '11-1-1-0')
-newFormData.append('user', 1234567)
-newFormData.append('action', 'get')
-newFormData.append('stream', 'stream1')
+const sendTaskBtns = document.querySelectorAll('.send-task')
 
-  fetch('https://rt.ptt.life/do.php', {
-    method: 'POST',
-    body: newFormData
+sendTaskBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    const uid = 1234567
+    const formData = new FormData()
+    
+    formData.append('group', btn.dataset.group)
+    formData.append('user', uid)
+    formData.append('action', 'edit')
+    formData.append('stream', 'stream1')
+
+    fetch('https://rt.ptt.life/do.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error.message))
   })
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(error => console.error(error.message))
+})
+
+// Получение данных с сервера
+
+// const newFormData = new FormData();
+
+// newFormData.append('form_id', '11-1-1-0')
+// newFormData.append('user', 1234567)
+// newFormData.append('action', 'get')
+// newFormData.append('stream', 'stream1')
+
+//   fetch('https://rt.ptt.life/do.php', {
+//     method: 'POST',
+//     body: newFormData
+//   })
+//   .then(res => res.json())
+//   .then(data => console.log(data))
+//   .catch(error => console.error(error.message))
 
 
 // Radar-chart
@@ -161,14 +193,14 @@ function chartOptions() {
       pointPlacement: 'on'
   }]
   
-  });
-} 
+  })
+};
 
 // Добавить сферу
 
-const addSphereBtn = document.querySelector('.add-field')
+const addSphereBtn = document.querySelector('.add-field');
 
-addSphereBtn.addEventListener('click', addSphere)
+addSphereBtn.addEventListener('click', addSphere);
 
 function addSphere(e) {
 
@@ -195,6 +227,13 @@ function addSphere(e) {
     sphereNum.type = 'number'
     sphereNum.classList.add('wheel-input')
     sphereNum.placeholder = 'Введите оценку от 0 до 10'
+    sphereNum.min = 0
+    sphereNum.max = 10
+    sphereNum.addEventListener('keyup', () => {
+      if(sphereNum.value > 10) {
+        sphereNum.value = 10
+      }
+    })
 
     if(countOfSpheres < 10) {
       spheresDiv.appendChild(taskInput)
@@ -203,13 +242,13 @@ function addSphere(e) {
       sphereWrapper.appendChild(sphereName)
       sphereWrapper.appendChild(sphereNum)
     } 
-}
+};
 
 
 
 // Ограничение ввода чисел для инпутов сфер КЖБ
 
-const wheelInputs = document.querySelectorAll('.wheel-input')
+const wheelInputs = document.querySelectorAll('.wheel-input');
 
 wheelInputs.forEach(input => {
   input.addEventListener('keyup', () => {
@@ -217,7 +256,7 @@ wheelInputs.forEach(input => {
       input.value = 10
     }
   })
-})
+});
 
 // Доступность заданий
 
@@ -233,18 +272,20 @@ wheelInputs.forEach(input => {
 // Родовая система - 656010909
 
 
-const availableTasks = [648396832, 643394526, 650927715, 650927717]
+// const availableTasks = [648396832, 643394526, 650927715, 650927717];
 
-const dataLabels = document.querySelectorAll('.side-menu-item-label[data-courseNum]')
+// const dataLabels = document.querySelectorAll('.side-menu-item-label[data-courseNum]');
 
-document.addEventListener('DOMContentLoaded', function () {
-  dataLabels.forEach(label => {
-    const dataValue = +label.dataset.coursenum
-    if(availableTasks.indexOf(dataValue) == -1) {
-      label.classList.add('disabled')
-    }
-  })
-})
+// document.addEventListener('DOMContentLoaded', function () {
+//   if(window.userInfo.isTeacher == false && window.userInfo.isTeacher == false) {
+//     dataLabels.forEach(label => {
+//       const dataValue = +label.dataset.coursenum
+//       if(availableTasks.indexOf(dataValue) == -1) {
+//         label.classList.add('disabled')
+//       }
+//     })
+//   }
+// });
 
 // Функционал проверки данных ученика куратором
 
@@ -256,4 +297,3 @@ document.addEventListener('DOMContentLoaded', function () {
 //     studentId = window.navigation.currentEntry.url.split('student-id=').slice(-1)
 //   }
 // });
-
