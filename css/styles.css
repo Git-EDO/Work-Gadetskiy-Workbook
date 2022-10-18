@@ -171,6 +171,11 @@ body {
   list-style: none;
 }
 
+.side-menu-item-label.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .side-menu-list>li>.side-menu-item-label {
   font-family: 'Gotham Pro';
   font-style: normal;
@@ -183,6 +188,7 @@ body {
   position: relative;
   cursor: pointer;
   display: flex;
+
 }
 
 .side-menu-list>li.active>.side-menu-item-label {
@@ -239,6 +245,10 @@ body {
 }
 
 .side-submenu-item:hover {
+  background: linear-gradient(0deg, #FFF1FD, #FFF1FD), linear-gradient(180deg, #338FD1 0%, #064674 86.84%);
+}
+
+.side-submenu-item a.active {
   background: linear-gradient(0deg, #FFF1FD, #FFF1FD), linear-gradient(180deg, #338FD1 0%, #064674 86.84%);
 }
 
@@ -355,6 +365,25 @@ body {
   flex-direction: column;
 }
 
+.task-input input {
+  margin-top: 8px;
+  background: #F2F5FB;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: none;
+  outline: none;
+  min-height: 65px;
+
+  resize: none;
+
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 113%;
+  color: #000000;
+}
+
 .task-input ul {}
 
 .task-input ol {
@@ -368,6 +397,108 @@ body {
   font-size: 18px;
   line-height: 120%;
   color: #8C197F;
+}
+.wheel-inputs-wrapper {
+  display: flex;
+}
+.wheel-sphere {
+  flex: 0 0 60%;
+}
+.wheel-input {
+  flex: 0 0 30%;
+  margin-left: 20px;
+}
+
+.task-numeric-input {
+  display: flex;
+  align-items: center;
+}
+
+.make-wheel {
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  text-decoration-line: underline;
+  color: #8C197F;
+  margin-top: 10px;
+
+  border: 1px solid #8C197F;
+  background: none;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 7.5px 23px;
+  border-radius: 4px;
+}
+
+.make-wheel:active {
+  transform: scale(0.98);
+}
+
+.add-field {
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 120%;
+  text-decoration-line: underline;
+  color: #8C197F;
+  margin-top: 10px;
+
+  background: none;
+  border: none;
+
+  cursor: pointer;
+
+  padding: 7.5px 23px;
+  border-radius: 4px;
+}
+.add-field:active {
+  transform: scale(0.98);
+}
+
+.task-numeric-input label {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
+  background: #F2F5FB;
+  border: 1px solid #F2F5FB;
+  border-radius: 8px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 135.5%;
+  text-align: center;
+  color: #000000;
+
+}
+
+.task-numeric-input textarea {
+  width: 100%;
+
+  margin-top: 8px;
+  background: #F2F5FB;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: none;
+  outline: none;
+  min-height: 65px;
+
+  resize: none;
+
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 113%;
+  color: #000000;
+
 }
 
 .task-input textarea {
